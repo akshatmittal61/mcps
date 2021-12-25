@@ -15,6 +15,7 @@
   --tcolor-400: #272727;
   --tcolor-700: #1d1d1d;
   --primary: #003a6a;
+  --secondary: #fbbc05;
   --back-shadow: rgba(0, 0, 0, 0.2);
   --back-shadow-light: rgba(0, 0, 0, 0.1);
   --transition-time: 200ms;
@@ -575,14 +576,15 @@ button {
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  user-select: none;
   border-radius: 500px;
   margin: 0.5rem;
   padding: 0.825rem;
   transition: all var(--transition-time) ease-in-out; }
   .icon:hover {
-    background-color: rgba(0, 0, 0, 0.1); }
+    background-color: rgba(0, 0, 0, 0.075); }
   .icon:active, .icon:focus {
-    background-color: rgba(0, 0, 0, 0.25); }
+    background-color: rgba(0, 0, 0, 0.2); }
   .icon-sm {
     padding: 0.6rem; }
   .icon-lg {
@@ -649,6 +651,55 @@ button {
   flex-flow: column;
   transition: all var(--transition-time) ease-in-out; }
 
+.accordian {
+  width: 100%;
+  margin: 0 auto;
+  background-color: transparent;
+  display: flex;
+  flex-flow: column;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  transition: all var(--transition-time) ease-in-out; }
+  .accordian > * {
+    width: 100%;
+    padding: 1rem;
+    overflow: hidden;
+    transition: all var(--transition-time) linear; }
+  .accordian-header {
+    display: flex;
+    justify-content: space-between;
+    height: 4rem;
+    cursor: pointer;
+    user-select: none; }
+    .accordian-header > * {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+    .accordian-header-content {
+      width: 90%;
+      justify-content: flex-start;
+      font-size: 1.25rem;
+      line-height: 1.25rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap; }
+    .accordian-header-icon {
+      width: 5%; }
+      .accordian-header-icon .material-icons {
+        transition: all var(--transition-time) linear; }
+  .accordian-expand-false .accordian-header-icon .material-icons {
+    transform: rotateZ(-180deg); }
+  .accordian-expand-false .accordian-body {
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
+    padding: 0 1rem; }
+  .accordian-expand-true .accordian-body {
+    height: auto;
+    opacity: 1;
+    visibility: visible;
+    padding: 0.5rem 1rem; }
+
 .header {
   width: 100%;
   height: 12.5vh;
@@ -672,8 +723,8 @@ button {
       align-items: center; }
       .header-left-image__img {
         object-fit: cover;
-        max-width: 100%;
-        max-height: 100%; }
+        max-width: 85%;
+        max-height: 85%; }
     .header-left-content {
       width: 75%;
       height: 100%;
@@ -730,7 +781,7 @@ button {
 
 .footer {
   width: 100%;
-  height: 45vh;
+  height: 50vh;
   display: flex;
   flex-flow: column;
   background-color: var(--primary);
@@ -757,7 +808,21 @@ button {
         justify-content: flex-start;
         align-items: center;
         font-size: 1.25rem;
+        margin: 0.5rem 0;
         padding: 0 0.25rem; }
+        .footer-top-links__title span, .footer-top-map__title span, .footer-top-contact__title span {
+          position: relative; }
+          .footer-top-links__title span:after, .footer-top-map__title span:after, .footer-top-contact__title span:after {
+            content: "";
+            position: absolute;
+            width: 125%;
+            height: 0.25rem;
+            background-color: var(--secondary);
+            top: 110%;
+            left: 0;
+            transition: all var(--transition-time) ease-in-out; }
+          .footer-top-links__title span:hover:after, .footer-top-map__title span:hover:after, .footer-top-contact__title span:hover:after {
+            width: 150%; }
       .footer-top-links__body, .footer-top-map__body, .footer-top-contact__body {
         width: 100%;
         height: 85%;
@@ -765,7 +830,12 @@ button {
       .footer-top-links__ul, .footer-top-map__ul, .footer-top-contact__ul {
         list-style: none; }
       .footer-top-links__li, .footer-top-map__li, .footer-top-contact__li {
-        padding: 0.25rem; }
+        padding: 0.25rem;
+        color: var(--bgcolor);
+        transition: all var(--transition-time) ease-in-out; }
+        .footer-top-links__li:hover, .footer-top-map__li:hover, .footer-top-contact__li:hover {
+          padding: 0.25rem 0.5rem;
+          color: var(--secondary); }
     .footer-top-links {
       width: 25%; }
       .footer-top-links__li::marker {
@@ -789,8 +859,74 @@ button {
     .footer-bottom a {
       margin: 0 0.5rem; }
 
+.navigation {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start; }
+  .navigation-box {
+    width: 25%;
+    height: 100%;
+    background-color: var(--bgcolor);
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-flow: column; }
+  .navigation-head {
+    width: 100%;
+    height: 12.5vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.25); }
+    .navigation-head-content {
+      width: 80%;
+      height: 100%;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 1rem;
+      font-size: 1.5rem; }
+    .navigation-head-close {
+      width: 20%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+  .navigation-body {
+    width: 100%;
+    height: 87.5vh;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    overflow: auto; }
+    .navigation-body-accordian__container {
+      width: 100%;
+      display: flex;
+      flex-flow: column; }
+    .navigation-body-accordian__content {
+      width: 100%;
+      padding: 0.75rem 0.5rem; }
+    .navigation-body-link {
+      height: 4rem;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      font-size: 1.25rem;
+      line-height: 1.25rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      border-bottom: 2px solid rgba(0, 0, 0, 0.1); }
+
 main {
-  min-height: 42.5vh; }
+  min-height: 37.5vh; }
 
 ::-webkit-scrollbar {
   width: 8px;

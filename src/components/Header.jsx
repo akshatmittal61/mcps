@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import favicon from "../images/favicon.png";
 
-const Header = () => {
+const Header = ({ onClick }) => {
 	const headNav = [
 		{
 			icon: "home",
@@ -64,7 +64,7 @@ const Header = () => {
 					</ul>
 				</nav>
 				<div className="header-right-burger">
-					<button className="icon">
+					<button className="icon" onClick={onClick}>
 						<span className="material-icons">menu</span>
 					</button>
 				</div>
