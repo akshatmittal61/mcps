@@ -26,7 +26,7 @@ const Header = ({ onClick }) => {
 		},
 	];
 	return (
-		<header className="header">
+		<header className="header" data-aos="fade-down">
 			<div className="header-left">
 				<div className="header-left-image">
 					<img

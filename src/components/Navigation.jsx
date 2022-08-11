@@ -1,6 +1,4 @@
 import React from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import Accordian from "./Accordian/Accordian";
 import { Link } from "react-router-dom";
 
@@ -99,7 +97,6 @@ const Navigation = ({ onClick }) => {
 			],
 		},
 	];
-	AOS.init();
 	return (
 		<section className="navigation">
 			<div className="navigation-box" data-aos="fade-left">
@@ -147,18 +144,12 @@ const Navigation = ({ onClick }) => {
 						</Link>
 					</div>
 					<div className="navigation-body-link">
-						<Link
-							to="/gallery"
-							className="navigation-body__link"
-						>
+						<Link to="/gallery" className="navigation-body__link">
 							Photo & Video Gallery
 						</Link>
 					</div>
 					<div className="navigation-body-link">
-						<Link
-							to="/downloads"
-							className="navigation-body__link"
-						>
+						<Link to="/downloads" className="navigation-body__link">
 							Downloads
 						</Link>
 					</div>
